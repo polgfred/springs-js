@@ -18,6 +18,25 @@ export default {
 		url.hostname = "www.google.com";
 		url.port = 443;
 
+		const accept = request.headers.get('accept');
+		if (accept?.indexOf('text/html') >= 0) {
+			const response = await fetch(url.toString(), request);
+
+			const writer = new HTMLRewriter();
+			writer.on('h1,h2,h3,h4,h5,h6', {
+				element(e) {
+					e.setAttribute('style', 'color:red');
+				}
+			});
+			writer.on('p', {
+				element(e) {
+					e.setAttribute('style', 'color:purple');
+				}
+			});
+
+			return writer.transform(response);
+		}
+
 		return fetch(url.toString(), request);
 	},
 };
