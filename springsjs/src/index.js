@@ -9,7 +9,15 @@
  */
 
 export default {
-	async fetch(request, env, ctx) {
-		return new Response("Hello ColoradoSpringsJS!");
+	async fetch(_request, env, ctx) {
+		const request = new Request(_request);
+		request.headers.set("origin", "https://www.google.com");
+		request.headers.set("referer", "https://www.google.com/");
+
+		const url = new URL(request.url);
+		url.hostname = "www.google.com";
+		url.port = 443;
+
+		return fetch(url.toString(), request);
 	},
 };
