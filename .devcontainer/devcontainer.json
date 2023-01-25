@@ -1,0 +1,12 @@
+{
+  "image": "mcr.microsoft.com/vscode/devcontainers/javascript-node",
+  "remoteUser": "node",
+  "extensions": [
+    "esbenp.prettier-vscode"
+  ],
+  "onCreateCommand": ".devcontainer/onCreate.sh",
+  "settings": {
+    "dotfiles.repository": "https://github.com/polgfred/dotfiles.git",
+    "dotfiles.targetPath": "/workspaces/dotfiles"
+  }
+}
