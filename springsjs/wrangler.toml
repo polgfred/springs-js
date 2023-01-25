@@ -1,0 +1,7 @@
+name = "springsjs"
+main = "src/index.js"
+compatibility_date = "2023-01-25"
+
+[dev]
+port = 8787
+local_protocol = "https"
